@@ -321,6 +321,9 @@ public class EventBus {
     /**
      * Posts the given event to the event bus and holds on to the event (because it is sticky). The most recent sticky
      * event of an event's type is kept in memory for future access by subscribers using {@link Subscribe#sticky()}.
+     * 发布粘性事件
+     * 同类型的粘性事件，只保存最后一次发布的事件
+     * 订阅者在粘性事件发布后才进行订阅，仍然能立刻收到最后一次发布的粘性事件的通知
      */
     public void postSticky(Object event) {
         synchronized (stickyEvents) {
