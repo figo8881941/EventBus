@@ -16,6 +16,9 @@
 
 package org.greenrobot.eventbus;
 
+/**
+ * 将要发布的信息队列
+ */
 final class PendingPostQueue {
     private PendingPost head;
     private PendingPost tail;
