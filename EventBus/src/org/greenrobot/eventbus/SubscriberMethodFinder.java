@@ -82,6 +82,7 @@ class SubscriberMethodFinder {
         FindState findState = prepareFindState();
         findState.initForSubscriber(subscriberClass);
         while (findState.clazz != null) {
+            //如果有SubscriberInfo，就直接使用SubscriberInfo里面的信息
             findState.subscriberInfo = getSubscriberInfo(findState);
             if (findState.subscriberInfo != null) {
                 SubscriberMethod[] array = findState.subscriberInfo.getSubscriberMethods();
