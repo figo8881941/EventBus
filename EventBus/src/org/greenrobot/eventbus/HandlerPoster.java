@@ -67,6 +67,11 @@ public class HandlerPoster extends Handler implements Poster {
                 eventBus.invokeSubscriber(pendingPost);
                 long timeInMethod = SystemClock.uptimeMillis() - started;
                 if (timeInMethod >= maxMillisInsideHandleMessage) {
+                    /**
+                     * maxMillisInsideHandleMessage，在handleMessage里面的最长处理总时间
+                     * 防止发布到主线程的事件太多或者处理事件的时间太长，长期占用主线程消息队列
+                     * 所以，如果累计处理时间超过maxMillisInsideHandleMessage，就重新发送消息，等待下一次处理
+                     */
                     if (!sendMessage(obtainMessage())) {
                         throw new EventBusException("Could not send handler message");
                     }
