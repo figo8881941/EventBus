@@ -19,12 +19,18 @@ import java.lang.reflect.Method;
 
 /** Used internally by EventBus and generated subscriber indexes. */
 public class SubscriberMethod {
+    //订阅方法
     final Method method;
+    //订阅方法回调的线程方式
     final ThreadMode threadMode;
+    //事件类型
     final Class<?> eventType;
+    //优先级
     final int priority;
+    //是否粘性
     final boolean sticky;
     /** Used for efficient comparison */
+    //用于比较两个订阅方法是否一样的字符串
     String methodString;
 
     public SubscriberMethod(Method method, Class<?> eventType, ThreadMode threadMode, int priority, boolean sticky) {

@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * 将要发布的信息类
- * 这里使用了缓存池，避免频繁创建过多的临时对象，导致GC，影响性能
+ * 这里使用了缓存池，避免频繁创建过多的临时对象，消耗资源，导致GC，影响性能
  */
 final class PendingPost {
     private final static List<PendingPost> pendingPostPool = new ArrayList<PendingPost>();
