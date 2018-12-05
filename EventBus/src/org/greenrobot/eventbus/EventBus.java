@@ -45,15 +45,15 @@ public class EventBus {
 
     private static final EventBusBuilder DEFAULT_BUILDER = new EventBusBuilder();
 
-    //以事件类型分类的事件类型的父类及实现接口的Map集合
+    //以订阅事件Class对象为Key的事件的父类及实现接口的Map集合
     //保存的是某个事件的父类及接口集合
     private static final Map<Class<?>, List<Class<?>>> eventTypesCache = new HashMap<>();
 
-    //以订阅事件类型分类的订阅信息的Map集合
+    //以订阅事件Class对象为Key的订阅信息的Map集合
     //保存的是某个事件被哪些订阅者的订阅方法订阅
     private final Map<Class<?>, CopyOnWriteArrayList<Subscription>> subscriptionsByEventType;
 
-    //以订阅者分类的订阅事件类型的Map集合
+    //以订阅者为Key的订阅事件类型的Map集合
     //保存的是某个订阅者订阅了哪些事件
     private final Map<Object, List<Class<?>>> typesBySubscriber;
 

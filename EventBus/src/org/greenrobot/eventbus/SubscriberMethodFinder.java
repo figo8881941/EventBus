@@ -37,7 +37,8 @@ class SubscriberMethodFinder {
 
     private static final int MODIFIERS_IGNORE = Modifier.ABSTRACT | Modifier.STATIC | BRIDGE | SYNTHETIC;
 
-    //缓存的是某个对象有哪些订阅方法
+    //以订阅者Class对象为Key的订阅方法集合
+    //缓存的是某个Class对象有哪些订阅方法
     private static final Map<Class<?>, List<SubscriberMethod>> METHOD_CACHE = new ConcurrentHashMap<>();
 
     private List<SubscriberInfoIndex> subscriberInfoIndexes;
@@ -208,10 +209,10 @@ class SubscriberMethodFinder {
     static class FindState {
         //订阅方法集合
         final List<SubscriberMethod> subscriberMethods = new ArrayList<>();
-        //以订阅事件类型分类的订阅方法集合
+        //以订阅事件Class对象为Key的订阅方法集合
         //保存的是某个类型的事件对应的订阅方法
         final Map<Class, Object> anyMethodByEventType = new HashMap<>();
-        //以MethodKey进行分类的Class对象集合
+        //以MethodKey为Key的Class对象集合
         //保存的是某个MethodKey对应的Class对象
         final Map<String, Class> subscriberClassByMethodKey = new HashMap<>();
         final StringBuilder methodKeyBuilder = new StringBuilder(128);
