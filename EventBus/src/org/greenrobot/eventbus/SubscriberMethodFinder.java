@@ -63,7 +63,7 @@ class SubscriberMethodFinder {
         }
 
         if (ignoreGeneratedIndex) {
-            //直接通过反射，获取订阅方法
+            //通过注解获取订阅方法
             subscriberMethods = findUsingReflection(subscriberClass);
         } else {
             //优先通过编译期生成的SubscriberInfo来获取订阅方法
